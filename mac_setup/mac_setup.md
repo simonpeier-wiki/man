@@ -75,7 +75,7 @@ cp /Volumes/<your-drive>/.ssh ~/
 
 Make sure, that the file permissions are restricted:
 
-![Permissions](/Users/simonpeier/Documents/docs/mac_setup/permissions.png)
+![Permissions](permissions.png)
 
 If they are not change them with:
 
