@@ -1,5 +1,5 @@
 # Alias Cheatsheet
-
+```bash
 g = git
 gs = git status
 ts = tig status
@@ -15,3 +15,4 @@ glgg = git log --graph
 gm = git merge
 gp = git push
 gpsup = git push --set-upstream origin $(git_current_branch)
+```
