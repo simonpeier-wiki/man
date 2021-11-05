@@ -1,4 +1,5 @@
 # Bash Cheatsheet
+This cheatsheet contains information about basic and commonly used bash commands and utilities.
 
 ## Pipes
 
