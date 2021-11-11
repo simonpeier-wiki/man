@@ -12,6 +12,7 @@ brew install --cask signal
 brew install --cask spotify
 brew install --cask dozer
 brew install --cask vlc
+brew install --cask notion
 brew install --cask nordvpn
 brew install --cask firefox
 brew install --cask tor-browser
