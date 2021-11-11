@@ -35,6 +35,7 @@ This includes
 - Spotify
 - Signal
 - Dozer
+- Rectangle
 - Bitbar
 - Vlc player
 - Notion
