@@ -33,9 +33,11 @@ This includes
 - Unity Hub
 - Franz
 - Spotify
+- Signal
 - Dozer
 - Bitbar
 - Vlc player
+- Notion
 - NordVPN
 - Firefox
 - Tor
