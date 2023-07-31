@@ -2,7 +2,11 @@
 
 This manual explains how to install, update and backup a Minecraft server on a Linux machine.
 
-
+## Table of Contents
+- [Components](#components)
+- [Installation](#installation)
+- [Update](#update)
+- [Backup](#backup)
 
 ## Components
 
@@ -21,10 +25,30 @@ This manual explains how to install, update and backup a Minecraft server on a L
   apt upgrade
   ```
 
-* Install [Java](https://openjdk.java.net/). Generally it is recommended to install and use Java 8, as the majority of plugins are still written in Java 8. However you can also install newer versions. If you do so, it is recommended to use LTS (Long Term Support) versions such as Java 11 or the upcoming Java 17.
+* Install [Java](https://openjdk.java.net/). For Minecraft versions 1.12 through 1.17, Java 8 (or newer) is required. It is recommended to install Java 8 for these Minecraft versions, as the majority of plugins for these Minecraft versions are written in Java 8.
 
   ```bash
   apt install openjdk-8-jre-headless
+  ```
+
+  For Minecraft version 1.18 and up, Java 17 or newer is required. It is recommended to stick with Java 17, as it is the lates Long-Term Supported (LTS) version.
+
+  1. Install java-common package
+      ```bash
+      sudo apt-get update && sudo apt-get install java-common
+      ```
+  2. Download the Linux .deb file
+      ```bash
+      wget https://corretto.aws/downloads/latest/amazon-corretto-17-x64-linux-jdk.deb
+      ``` 
+  3. Install the .deb file
+      ```bash
+      sudo dpkg --install amazon-corretto-17-aarch64-linux-jdk.deb
+      ```
+
+  To verify your installation, run the following command
+  ```bash
+  java -version
   ```
   
 * Install [Screen](https://wiki.ubuntuusers.de/Screen/). It allows to run your Minecraft Server in the background.
@@ -33,10 +57,10 @@ This manual explains how to install, update and backup a Minecraft server on a L
   apt install screen
   ```
 
-* Create a new user (without a password). It is not required but recommended, as you should not run your websites and servers with the root user.
+* Create a new user. It is not required but recommended, as you should not run your websites and servers with the root user.
 
   ```bash
-  adduser --disabled-login minecraft
+  sudo adduser minecraft
   ```
 
   When being asked for user information, you can just hit enter a couple of times as these infos are unnecessary.
@@ -60,7 +84,7 @@ This manual explains how to install, update and backup a Minecraft server on a L
   wget https://papermc.io/api/v2/projects/paper/versions/<mc-version>/builds/<build-version>/downloads/paper-<mc-version>-<build-version>.jar
   
   # Example
-  wget https://papermc.io/api/v2/projects/paper/versions/1.17.1/builds/251/downloads/paper-1.17.1-243.jar
+  wget https://papermc.io/api/v2/projects/paper/versions/1.20.1/builds/69/downloads/paper-1.20.1-69.jar
   ```
 
   * To check if it was successfully installed you can list the current directory content with `ls`.
@@ -122,7 +146,7 @@ This manual explains how to install, update and backup a Minecraft server on a L
   wget https://papermc.io/api/v2/projects/paper/versions/<mc-version>/builds/<download-version>/downloads/paper-<mc-version>-<download-version>.jar
   ```
 
-  * Replace `<mc-version>` with the used Minecraft version e.g. 1.17.1 and `<download-version>` with the newest download e.g. 251.
+  * Replace `<mc-version>` with the used Minecraft version e.g. 1.20.1 and `<download-version>` with the newest download e.g. 70.
 
 * Stop the Minecraft server.
 
