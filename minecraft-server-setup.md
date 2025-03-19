@@ -1,6 +1,6 @@
 # Minecraft Server Setup
 
-This manual explains how to install, update and backup a Minecraft server on a Linux machine.
+This manual explains how to install, update and backup a Minecraft server on a Linux (Debian) machine.
 
 ## Table of Contents
 - [Components](#components)
@@ -18,6 +18,8 @@ This manual explains how to install, update and backup a Minecraft server on a L
 
 ## Installation
 
+### Update packages
+
 * Update and upgrade packages on server. This is not required but highly recommended, as it patches errors and bugs and may also improve the packages.
 
   ```bash
@@ -25,32 +27,17 @@ This manual explains how to install, update and backup a Minecraft server on a L
   apt upgrade
   ```
 
+### Install Java
 * Install [Java](https://openjdk.java.net/). For Minecraft versions 1.12 through 1.17, Java 8 (or newer) is required. It is recommended to install Java 8 for these Minecraft versions, as the majority of plugins for these Minecraft versions are written in Java 8.
 
   ```bash
   apt install openjdk-8-jre-headless
   ```
 
-  For Minecraft version 1.18 and up, Java 17 or newer is required. It is recommended to stick with Java 17, as it is the lates Long-Term Supported (LTS) version.
+  For Minecraft version 1.18 and up, Java 17 or newer is required. It is recommended to use Long-Term Supported (LTS) version. For a guide on how to install the latest, please visit the [official documentation](https://docs.papermc.io/misc/java-install) of PaperMC.
 
-  1. Install java-common package
-      ```bash
-      sudo apt-get update && sudo apt-get install java-common
-      ```
-  2. Download the Linux .deb file
-      ```bash
-      wget https://corretto.aws/downloads/latest/amazon-corretto-17-x64-linux-jdk.deb
-      ``` 
-  3. Install the .deb file
-      ```bash
-      sudo dpkg --install amazon-corretto-17-aarch64-linux-jdk.deb
-      ```
-
-  To verify your installation, run the following command
-  ```bash
-  java -version
-  ```
   
+### Set up environment
 * Install [Screen](https://wiki.ubuntuusers.de/Screen/). It allows to run your Minecraft Server in the background.
 
   ```bash
@@ -77,17 +64,18 @@ This manual explains how to install, update and backup a Minecraft server on a L
   cd
   ```
 
-* Install PaperMC. To check what the latest available build and Minecraft version is, go to https://papermc.io/downloads. Then copy the following template and replace `<mc-version>` with the Minecraft version and `<build-version>` with the build version.
+### Install and set up minecraft server
+* Install PaperMC. To check what the latest available build and Minecraft version is, go to their [download page](https://papermc.io/downloads). Then copy the following template and replace `<mc-version>` with the Minecraft version and `<build-version>` with the build version.
 
   ```bash
   # Template
-  wget https://papermc.io/api/v2/projects/paper/versions/<mc-version>/builds/<build-version>/downloads/paper-<mc-version>-<build-version>.jar
+  wget https://api.papermc.io/v2/projects/paper/versions/<mc-version>/builds/<build-version>/downloads/paper-<mc-version>-<build-version>.jar
   
   # Example
-  wget https://papermc.io/api/v2/projects/paper/versions/1.20.1/builds/69/downloads/paper-1.20.1-69.jar
+  wget https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds/212/downloads/paper-1.21.4-212.jar
   ```
 
-  * To check if it was successfully installed you can list the current directory content with `ls`.
+  * To check if it was successfully installed you can list the current directories content with `ls`.
 
 * Create a script to start the server.
 
@@ -136,17 +124,17 @@ This manual explains how to install, update and backup a Minecraft server on a L
 
 ## Update
 
-* Go to https://papermc.io/downloads and check what the newest download is.
+* Go to PaperMC's [download page](https://papermc.io/downloads/paper) and check what the newest download is.
 
 * Go to the directory on your server, where you installed the Minecraft server.
 
 * Install the newest version on your server with wget.
 
   ```bash
-  wget https://papermc.io/api/v2/projects/paper/versions/<mc-version>/builds/<download-version>/downloads/paper-<mc-version>-<download-version>.jar
+  wget https://api.papermc.io/v2/projects/paper/versions/<mc-version>/builds/<download-version>/downloads/paper-<mc-version>-<download-version>.jar
   ```
 
-  * Replace `<mc-version>` with the used Minecraft version e.g. 1.20.1 and `<download-version>` with the newest download e.g. 70.
+  * Replace `<mc-version>` with the used Minecraft version e.g. 1.21.4 and `<download-version>` with the newest download e.g. 213.
 
 * Stop the Minecraft server.
 
@@ -179,3 +167,12 @@ This manual explains how to install, update and backup a Minecraft server on a L
   * Replace the `<server-ip>` with the IP of your server.
   * The example downloads the backup to the Downloads folder, but you can replace it with any path.
 
+
+## Recommended Plugins
+The following list includes plugins, that I personally like to use on my servers to enhance the user experience with additional features: 
+
+* [Dynmap](https://www.spigotmc.org/resources/dynmap%C2%AE.274/): A Google Maps-like map for your Minecraft server that can be viewed in a browser.
+* [LuckPerms](https://www.spigotmc.org/resources/luckperms.28140/): Permissions plugin, that allows server admins to control what features players can use by creating groups and assigning permissions. It is required, for example, to give players permission to use the commands of the PlayTimes plugin.
+* [PlayTimes](https://www.spigotmc.org/resources/playtimes-track-player-playtime.58858/): Allows players to view their and other players playtime on the server using custom commands.
+* [Sleepmost](https://www.spigotmc.org/resources/sleep-most-1-8-1-21-x-the-most-advanced-sleep-plugin-available-percentage-animations.60623/): Allows the server admin to configure how many people have to sleep before it turns back into daytime.
+* [Timber](https://www.spigotmc.org/resources/timber-1-14-%E2%87%BE-1-21-4.113160/): Quite controversial amongst players, this plugin allows to fell trees with a single axe chop.
