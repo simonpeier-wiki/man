@@ -24,33 +24,51 @@ sh brew_installation.sh
 
 This includes
 
-- iTerm2
-- Sublime Text
-- Typora
-- Insomnia
+- Firefox 
 - Brave
+- iTerm2
 - JetBrains Toolbox
-- Spotify
-- Dozer
-- Rectangle
-- Vlc player
+- Sublime Text
+- Obsidian
 - Notion
-- Firefox
+- Insomnia
+- Spotify
+- Rectangle
+- VLC media player
 - Microsoft Word
 - Microsoft Powerpoint
 - Microsoft Excel
 
-### Applications from App Store 
-
-To install the applications from the AppStore visit the following links
+### Other Applications e.g. from App Store 
 
 - [CopyClip](https://apps.apple.com/de/app/copyclip-clipboard-history/id595191960?mt=12)
+- FinderGo
+- Docker
+- PDFGear
 
 ## Set up ZSH
 
-Download Oh My Zsh with `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+Download Oh My Zsh with `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"` . 
+If you already used oh-my-zsh replace the .zshrc in the `~/` directory with the .zshrc file from your old computer.
 
-If you already used oh-my-zsh replace the .zshrc in the `~/` directory with the .zshrc file from your old computer
+### Custom theme (agnoster)
+To use the agnoster theme, you first have to install the powerline fonts. Follow the installation guide on their [GitHub](https://github.com/powerline/fonts). Then you have to set the font in iTerm2. To do so open the preferences and go to _Profiles > Text > Font_ and select a powerline font. 
+To change the theme, open the iTerm2 preferences and go to _Profiles > Colors > Color Preset_ and select "Solarized".
+To shorten the name, displayed at the start of each terminal line, add the following script to your .zshrc file. It excludes the device name which will result in only the username being displayed.
+```bash
+prompt_context() {
+  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+  fi
+}
+```
+
+### Plugins
+Certain plugins require additional installation.
+```bash
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions\n
+git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting\n
+```
 
 ## Set up SSH
 
@@ -85,6 +103,6 @@ chmod 644 known_hosts
 To generate a new pair of SSH keys you can use the following command. Before generating the pair, please check if this is the latest and most secure technology
 
 ```bash
-ssh-keygen -t rsa -b 4096 -C <username>@simonpeier.net
+ssh-keygen -t ed25519 -C <username>@simonpeier.net
 ```
 
