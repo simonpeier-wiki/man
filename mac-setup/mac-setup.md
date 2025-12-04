@@ -48,11 +48,11 @@ This includes
 
 ## Set up ZSH
 
-Download Oh My Zsh with `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"` . 
+Download Oh My Zsh with `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
 If you already used oh-my-zsh replace the .zshrc in the `~/` directory with the .zshrc file from your old computer.
 
 ### Custom theme (agnoster)
-To use the agnoster theme, you first have to install the powerline fonts. Follow the installation guide on their [GitHub](https://github.com/powerline/fonts). Then you have to set the font in iTerm2. To do so open the preferences and go to _Profiles > Text > Font_ and select a powerline font. 
+To use the agnoster theme, you first have to install the powerline fonts. Follow the installation guide on their [GitHub](https://github.com/powerline/fonts). Then you have to set the font in iTerm2. To do so open the preferences and go to _Profiles > Text > Font_ and select a powerline font.
 To change the theme, open the iTerm2 preferences and go to _Profiles > Colors > Color Preset_ and select "Solarized".
 To shorten the name, displayed at the start of each terminal line, add the following script to your .zshrc file. It excludes the device name which will result in only the username being displayed.
 ```bash
