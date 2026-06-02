@@ -22,3 +22,9 @@ git diff <commit-sha>^!
 ```bash
 git commit --amend --reset-author
 ```
+
+## Rename local and remote branch
+```bash
+git branch -m new-name
+git push -u origin :old-name new-name
+```
