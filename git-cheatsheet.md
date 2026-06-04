@@ -28,3 +28,32 @@ git commit --amend --reset-author
 git branch -m new-name
 git push -u origin :old-name new-name
 ```
+
+## Rebase a dependent branch after squash-merging its base branch
+```bash
+git checkout branch-2
+git rebase --onto origin/master branch-1
+```
+in short `git rebase --onto origin/master branch-1 branch-2`
+
+### Problem statement
+Before squash merge:
+
+```text
+master
+  \
+   A---B---C  branch-1
+            \
+             D---E  branch-2
+```
+After branch-1 was squash-merged into master
+
+```text
+master:  S
+         ↑
+         one squashed commit containing A+B+C
+
+old branch-1: A---B---C
+                       \
+                        D---E  branch-2
+```
